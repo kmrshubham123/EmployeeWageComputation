@@ -13,23 +13,24 @@ namespace EmpWageComputation
         //variable
         int empHrs = 0;
         int empWage = 0;
-        public void TotalEmpWage()
+        public void CaseEmpWage()
         {
             Random random = new Random();
             int empCheck= random.Next(0, 2);
+            switch(empCheck)
+            {
+                case IS_PART_TIME:
+                    empHrs = 4;
+                    break;
 
-            if (empCheck == IS_PART_TIME)
-            
-            {
-                empHrs = 4;
-            }
-            else if (empCheck == IS_FULL_TIME)
-            {
-                empHrs = 8;
-            }
-            else
-            {
-                empHrs = 0;
+                case IS_FULL_TIME:
+                    empHrs = 8;
+                    break;
+
+                default:
+                    empHrs = 0;
+                    break;
+
             }
 
             empWage = empHrs * EMP_RATE_PER_HOURS;
