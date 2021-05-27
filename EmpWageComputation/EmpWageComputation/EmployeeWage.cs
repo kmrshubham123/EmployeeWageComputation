@@ -2,60 +2,42 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EmpWageComputation
+namespace EmployeeWage
 {
-    public class EmployeeWage
+    class EmployeeWage
     {
-        //constant
-        public const int IS_FULL_TIME = 2;
-        public const int EMP_RATE_PER_HOURS = 20;
-        public const int IS_PART_TIME = 1;
+        public const int IS_FULL_TIME = 1;
+        public const int IS_PART_TIME = 2;
+        public const int EMP_RATE_PER_HOUR = 20;
         public const int NUM_OF_WORKING_DAYS = 20;
         public const int MAX_HRS_IN_MONTH = 100;
-        //variable
-        int empHrs = 0;
-        int empWage = 0;
-        int totalEmpWage = 0;
-        int totalEmpHrs = 0;
-        int totalWorkingDays = 0;
-        
-       
-        public void TotalEmpWage()
+
+
+        public void EmpWage()
         {
-            
-            
-            while(totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
+            int empHrs = 0, totalempHrs = 0, totalWorkingDays = 0;
+            while (totalempHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
             {
                 totalWorkingDays++;
                 Random random = new Random();
                 int empCheck = random.Next(0, 3);
-
                 switch (empCheck)
                 {
                     case IS_PART_TIME:
                         empHrs = 4;
                         break;
-
                     case IS_FULL_TIME:
                         empHrs = 8;
                         break;
-
                     default:
                         empHrs = 0;
                         break;
-
                 }
-                totalEmpHrs += empHrs;
-                Console.WriteLine("Emp Wage :-" + empWage);
-
-                int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOURS;
-                Console.WriteLine("Total Emp Wage :-" + totalEmpWage);
-
+                totalempHrs += empHrs;
+                Console.WriteLine("Number of days :" + totalWorkingDays + "Employee hours :" + empHrs);
             }
-
-
-
+            int totalEmpWage = totalempHrs * EMP_RATE_PER_HOUR;
+            Console.WriteLine("Total emp Wage: " + totalEmpWage);
         }
-
     }
 }

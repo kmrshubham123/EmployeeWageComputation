@@ -1,14 +1,15 @@
 ﻿using System;
 
-namespace EmpWageComputation
+namespace EmployeeWage
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("#### Welcome to the Employee Wage Computation ####");
+            Console.WriteLine("Welcome to Employee Wage Computation");
             EmployeeWage employeeWage = new EmployeeWage();
-            employeeWage.TotalEmpWage();
+            employeeWage.EmpWage();
+
         }
     }
 }
