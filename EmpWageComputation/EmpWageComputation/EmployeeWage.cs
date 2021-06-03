@@ -5,55 +5,44 @@ using System.Text;
 namespace EmployeeWage
 {
     class EmployeeWage
-    {
-        public void ComputeEmployeeWage()
+    { 
+        public const int IS_FULL_TIME = 1;
+        public const int IS_PART_TIME = 2;
+        public const int EMP_RATE_PER_HOUR = 20;
+        public const int NUM_OF_WORKING_DAYS = 20;
+        public const int MAX_HRS_IN_MONTH = 100;
+    
+        public void ComputeEmpWage()
         {
-            //constants
-            const int WAGE_PER_HR = 20;
-            const int WORKING_DAYS = 20;
-            const int IS_FULL_TIME = 8;
-            const int IS_PART_TIME = 4;
-            const int FULL_TIME = 1;
-            const int PART_TIME = 2;
-            //variables
-            int dailyWage = 0;
-            int days, isPresent;
-            int totalWage = 0;
-            int totalHours = 0;
-            //random number generation
-            Random rand = new Random();
-             // calculating for 20 working days
-            for (days = 1; days <= WORKING_DAYS; days++) 
+        //variables
+            int empHrs= 0;
+            int totalWorkingDays = 0;
+            int totalEmpHrs = 0;
+
+            //computation
+            while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
             {
-                isPresent = rand.Next(0, 3);
-              
-                switch (isPresent)
+                totalWorkingDays++;
+                Random random = new Random();
+                int empCheck = random.Next(0, 3);
+                switch (empCheck)
                 {
-                    case FULL_TIME: // Employee is present full time
-                        {
-                            dailyWage = WAGE_PER_HR * IS_FULL_TIME;
-                            Console.WriteLine($"Daily wage is {dailyWage}");  // daily wage is 160
-                            break;
-                        }
-                    case PART_TIME: //employee is present for part time
-                        {
-                            dailyWage = WAGE_PER_HR * IS_PART_TIME;
-                            Console.WriteLine($"Daily wage is {dailyWage}");  // daily wage is 80
-                            break;
-                        }
-                    default: // employee is absent
-                        {
-                            Console.WriteLine($"Daily wage is {dailyWage}"); // daily wage is 0
-                            break;
-                        }
+                    case IS_PART_TIME:
+                        empHrs = 4;
+                        break;
+                    case IS_FULL_TIME:
+                        empHrs = 8;
+                        break;
+                    default:
+                        empHrs = 0;
+                        break;
                 }
-                //checking total number of hours
-                totalHours += dailyWage / 20; //calculate total hours worked
-                totalWage += dailyWage; // calculating montly wage
-                if (totalHours >= 100) // total hours are limited to 100
-                    break;
+                totalEmpHrs += empHrs;
+                Console.WriteLine("Number of days :" + totalWorkingDays + "Employee hours :" + empHrs);
             }
-            Console.WriteLine($"Montly wage is {totalWage} and working hours is {totalHours}"); // output 
+            int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
+            Console.WriteLine("Total emp Wage: " + totalEmpWage);
+            
         }
     }
 }
