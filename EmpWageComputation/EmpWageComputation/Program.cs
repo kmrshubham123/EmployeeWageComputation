@@ -13,6 +13,7 @@ namespace EmployeeWage
             empWageBuilder.addCompanyEmpWage("Trends", 10, 4, 10);
             empWageBuilder.addCompanyEmpWage("FaceBook", 20, 10, 10);
             empWageBuilder.computeEmpWage();
+            Console.WriteLine("Total Wage for BigBazzar Company : " +empWageBuilder.getTotalWage("BigBazzar"));
 
 
 
