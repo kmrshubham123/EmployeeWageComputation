@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmpWageComputation;
+using System;
 
 namespace EmployeeWage
 {
@@ -7,12 +8,10 @@ namespace EmployeeWage
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Employee Wage Computation");
-            EmployeeWage BigBazaar = new EmployeeWage("BigBazzar", 20, 2, 10);
-            EmployeeWage Trends = new EmployeeWage("Trends ", 10, 4, 20);
-            BigBazaar.computeEmpWage();
-            Console.WriteLine(BigBazaar.tostring());
-            Trends.computeEmpWage();
-            Console.WriteLine(Trends.tostring());
+            EmpWageBuilderArray empWageBuilder = new EmpWageBuilderArray();
+            empWageBuilder.addCompanyEmpWage("BigBazaar", 20, 10, 10);
+            empWageBuilder.addCompanyEmpWage("Trends", 20, 10, 10);
+            empWageBuilder.computeEmpWage();
 
 
 
